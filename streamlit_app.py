@@ -59,8 +59,11 @@ def prev():
     if has_prev_action():
         st.session_state.action-=1
         st.session_state.action_step=len(st.session_state.task["actions"][st.session_state.action]["data"]) - 1
-    
-if not st.session_state["task"]:
+
+def in_task():
+    return hasattr(st.session_state, "task") and st.session_state["task"] is not None
+
+if not in_task():
     locations = get_locations()
     for location in locations:
         st.header(remove_prefix(location["object_name"]))
@@ -76,7 +79,7 @@ if not st.session_state["task"]:
                 with col3:
                     st.button("Start", on_click=set_task, args=[task])
 
-if st.session_state["task"]:
+if in_task():
     st.button("Home", on_click=set_task, args=[None])
     task = st.session_state["task"]
 
