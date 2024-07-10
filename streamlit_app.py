@@ -3,7 +3,7 @@ import streamlit_3d as sd
 import requests
 import json
 
-st.title("🎈 CMMS Extension")
+st.title("📋 Maintenance tasks")
 
 auth = {'username': st.secrets['alldevice']['username'],
         'password': st.secrets['alldevice']['password'],
@@ -77,7 +77,16 @@ if not in_task():
                 with col2:
                     st.write(task["service_date"])
                 with col3:
-                    st.button("Start", on_click=set_task, args=[task])
+                    st.button("Begin service", on_click=set_task, args=[task])
+    st.divider()
+    st.subheader('What is this and how this prototype works?')
+    st.markdown('''
+    The goal of creating this proof of concept was to quickly demo a way to define machinery maintenance tasks together with 3D models. An existing [AllDevice](https://www.alldevicesoft.com/) CMMS was used as a data source.
+    
+    List of service tasks are loaded from https://demo.alldevicesoft.com/ instance. Only locations with 'EXT:' prefix in name are considered, other service tasks are ignored.
+    
+    Service task's action steps/activities contents are expected to be encoded in JSON as follows, so the interactive 3D model with annotations can be rendered. Only glTF models are supported.''')
+    st.json('{"action": "Määri laagrid","model":"https://alteirac.com/models/helmet/scene.gltf","points":[{"description": "Laagri asukoht", "data-position":{"x":0.4595949207254826,"y":0.40998085773554555,"z":0.33846317660071373},"data-normal":{"x":-0.18705895743345607,"y":-0.3420641705224677,"z":0.9208697246020658}}]}')
 
 if in_task():
     st.button("Home", on_click=set_task, args=[None])
@@ -86,7 +95,7 @@ if in_task():
     action = task["actions"][st.session_state.action]
     st.header(remove_prefix(action["action"]))
     action_step = json.loads(action["data"][st.session_state.action_step]["action"])
-    with st.container(border=True):
+    with st.container():
         col1, col2, col3 = st.columns(3)
         with col1:
             st.button('Prev', on_click=prev, disabled=not has_prev())
