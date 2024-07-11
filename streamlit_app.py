@@ -85,7 +85,7 @@ if not in_task():
     
     List of service tasks are loaded from https://demo.alldevicesoft.com/ instance. Only locations with 'EXT:' prefix in name are considered, other service tasks are ignored.
     
-    Service task's action steps/activities contents are expected to be encoded in JSON as follows, so the interactive 3D model with annotations can be rendered. Only glTF models are supported.''')
+    Service task's action steps/activities contents defined in CMMS are expected to be encoded in JSON as follows, so the interactive 3D model with annotations can be rendered. Only glTF models are supported.''')
     st.json('{"action": "Määri laagrid","model":"https://alteirac.com/models/helmet/scene.gltf","points":[{"description": "Laagri asukoht", "data-position":{"x":0.4595949207254826,"y":0.40998085773554555,"z":0.33846317660071373},"data-normal":{"x":-0.18705895743345607,"y":-0.3420641705224677,"z":0.9208697246020658}}]}')
 
 if in_task():
