@@ -77,7 +77,7 @@ if not in_task():
                 with col2:
                     st.write(task["service_date"])
                 with col3:
-                    st.button("Begin service", on_click=set_task, args=[task])
+                    st.button("Begin service", on_click=set_task, args=[task], key=task["device_id"])
     st.divider()
     st.subheader('What is this and how this prototype works?')
     st.markdown('''
