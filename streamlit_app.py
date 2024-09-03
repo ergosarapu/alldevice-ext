@@ -83,9 +83,9 @@ if not in_task():
     st.markdown('''
     The goal of creating this proof of concept was to quickly demo a way to define machinery maintenance tasks together with 3D models. An existing [AllDevice](https://www.alldevicesoft.com/) CMMS was used as a data source.
     
-    List of service tasks are loaded from https://demo.alldevicesoft.com/ instance. Only location named 'Saekaater' is currently loaded, other service tasks are ignored.
+    List of service tasks are loaded from https://demo.alldevicesoft.com/ instance. To get personalised access to demo instance, contact AllDevice customer support.
     
-    Service task's action steps/activities contents defined in CMMS are expected to be encoded in JSON as follows, so the interactive 3D model with annotations can be rendered. Only glTF models are supported.''')
+    Only location named 'Saekaater' is currently loaded, other service tasks are ignored. Service task's action steps/activities contents defined in CMMS are expected to be encoded in JSON as follows, so the interactive 3D model with annotations can be rendered. Only glTF models are supported.''')
     st.json('{"action": "Määri laagrid","model":"https://alteirac.com/models/helmet/scene.gltf","points":[{"description": "Laagri asukoht", "data-position":{"x":0.4595949207254826,"y":0.40998085773554555,"z":0.33846317660071373},"data-normal":{"x":-0.18705895743345607,"y":-0.3420641705224677,"z":0.9208697246020658}}]}')
 
 if in_task():
